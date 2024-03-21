@@ -19,7 +19,7 @@ def manhattan_path(p1, p2):
     for y in range(y1 + step, y2 + step, step):
         path.append((x2, y))
     
-    return path
+    return path[1:-1], abs(x2-x1) + abs(y2-y1)
 
 
 def carica_dataset(nome_file):
@@ -40,11 +40,11 @@ def carica_dataset(nome_file):
             num_silver = int(line[3])
             num_tail = int(line[4])
         elif i <= num_golden:
-            diz_golden[f'G{i}'] =  line
+            diz_golden[f'G{i}'] =  [int(z) for z in line]
         elif i <= num_golden + num_silver:
-            diz_silver[f'G{i- num_golden}'] =  line
+            diz_silver[f'G{i- num_golden}'] =  [int(z) for z in line]
         elif i <= num_golden + num_silver + num_tail:
-            diz_tail[ line[0]] = [line[2], line[1]]
+            diz_tail[line[0]] = [int(line[2]), int(line[1])]
         i = i+1
 
     return griglia, diz_golden, diz_silver, diz_tail
