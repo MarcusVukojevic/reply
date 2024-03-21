@@ -48,4 +48,3 @@ def carica_dataset(nome_file):
         i = i+1
 
     return griglia, diz_golden, diz_silver, diz_tail
-
