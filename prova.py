@@ -40,12 +40,13 @@ lista_tiles = {
 
 }
 
-print(diz_golden)
 
 lista_path, costo_path = manhattan_path(diz_golden["G1"], diz_golden["G2"])
 
 
 corrente = lista_path[0]
+costo_path = 0 
+path = []
 for i in range(len(lista_path)):
     if i == 0:
         continue
@@ -56,5 +57,7 @@ for i in range(len(lista_path)):
         lista_tiles_scelti = get_tiles(direzione_scelta, lista_tiles)
         #print(lista_tiles_scelti)
         corrente = lista_path[i]
-
-scegli_tile(lista_tiles_scelti, diz_tiles)
+        tile_scelta, diz_tiles = scegli_tile(lista_tiles_scelti, diz_tiles)
+        costo_path = costo_path + diz_tiles[tile_scelta][0]
+        path.append(tile_scelta)
+print(path, costo_path)

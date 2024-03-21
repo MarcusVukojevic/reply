@@ -80,6 +80,17 @@ def get_tiles(direzione, lista_tiles):
 
 
 def scegli_tile(lista_tiles_scelti, diz_tiles):
-    print(lista_tiles_scelti, diz_tiles)
+    #print(lista_tiles_scelti)
+    min = 1000000
+    for chiave in lista_tiles_scelti:
+        costo = diz_tiles[chiave][0]
+        if costo<min:
+            min = costo
+            num_min = diz_tiles[chiave][1] 
+            chiave_min = chiave
+    diz_tiles[chiave_min][1] = num_min-1
+    return chiave_min, diz_tiles
+
+
 
     
