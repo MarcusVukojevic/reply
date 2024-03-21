@@ -1,3 +1,6 @@
+import math
+
+
 def manhattan_path(p1, p2):
     # Estrazione delle coordinate dei punti
     x1, y1 = p1
@@ -20,6 +23,40 @@ def manhattan_path(p1, p2):
         path.append((x2, y))
     
     return path, abs(x2-x1) + abs(y2-y1)
+
+
+def euclidean_path(p1, p2): 
+    # Estrazione delle coordinate dei punti 
+    x1, y1 = p1 
+    x2, y2 = p2 
+     
+    # Lista per mantenere il percorso 
+    path = [] 
+     
+    # Aggiunta del punto di partenza al percorso 
+    path.append((x1, y1)) 
+     
+    # Calcolo della lunghezza del percorso euclideo 
+    distance = math.sqrt((x2 - x1) ** 2 + (y2 - y1) ** 2)
+     
+    # Calcolo della quantità di spostamenti lungo x e y 
+    dx = x2 - x1 
+    dy = y2 - y1 
+     
+    # Calcolo del passo per ogni coordinata 
+    step_x = dx / distance 
+    step_y = dy / distance 
+     
+    # Aggiunta dei punti intermedi al percorso 
+    for i in range(1, int(distance)): 
+        intermediate_x = round(x1 + step_x * i) 
+        intermediate_y = round(y1 + step_y * i) 
+        path.append((intermediate_x, intermediate_y)) 
+     
+    # Aggiunta del punto finale al percorso 
+    path.append((x2, y2)) 
+     
+    return path, distance
 
 
 def carica_dataset(nome_file):
