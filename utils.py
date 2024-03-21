@@ -19,7 +19,7 @@ def manhattan_path(p1, p2):
     for y in range(y1 + step, y2 + step, step):
         path.append((x2, y))
     
-    return path[1:-1], abs(x2-x1) + abs(y2-y1)
+    return path, abs(x2-x1) + abs(y2-y1)
 
 
 def carica_dataset(nome_file):
@@ -48,3 +48,22 @@ def carica_dataset(nome_file):
         i = i+1
 
     return griglia, diz_golden, diz_silver, diz_tail
+
+def get_direzione(tupla):
+    if tupla[0] == -1 and tupla[1] == 0:
+        return ("O", "E")
+    elif tupla[0] == 1 and tupla[1] == 0:
+        return ("E", "O")
+    elif tupla[0] == 0 and tupla[1] == 1:
+        return ("S", "N")
+    elif tupla[0] == 0 and tupla[1] == -1:
+        return ("N", "S")
+    elif tupla[0] == -1 and tupla[1] == -1:
+        return ("S", "E")
+    elif tupla[0] == -1 and tupla[1] == 1:
+        return ("N", "E")
+    elif tupla[0] == 1 and tupla[1] == 1:
+        return ("N", "O")
+    elif tupla[0] == 1 and tupla[1] == -1:
+        return ("S", "O")
+    

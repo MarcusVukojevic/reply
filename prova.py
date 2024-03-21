@@ -25,20 +25,33 @@ lista_tiles = {
 
 lista_tiles = {
     "3" : Tile("3", [("E", "O"), ("O", "E")]),
-    "5" : Tile("5", [("S", "O"), ("O", "S")]),
+    "5" : Tile("5", [("S", "E"), ("E", "S")]),
     "7" : Tile("7", [("E", "S"), ("E", "O"), ("S", "O"), ("S", "E"), ("O", "E"), ("O", "S")]),
-    "6" : Tile("6", [("E", "S"), ("S", "E")]),
-    "9" : Tile("9", [("N", "O"), ("O", "N")]),
+    "6" : Tile("6", [("O", "S"), ("S", "O")]),
+    "9" : Tile("9", [("N", "E"), ("E", "N")]),
     #"96" : Tile("96", [("N", "O"), ("O", "N"),("E", "S"), ("S", "E")]),
-    "A" : Tile("A", [("E", "N"), ("N", "E")]),
+    "A" : Tile("A", [("O", "N"), ("N", "O")]),
     "B" : Tile("B", [("E", "N"), ("N", "E"), ("N", "O"), ("O", "N"),("E", "O"), ("O", "E")]),
     "C" : Tile("C", [("N", "S"), ("S", "N")]),
     #"C3" : Tile("C", [("N", "S"), ("S", "N")]),
-    "D" : Tile("D", [("N", "S"), ("S", "N"), ("N", "O"), ("O", "N"), ("S", "O"), ("O", "S")]),
-    "E" : Tile("E", [("N", "S"), ("S", "N"),("E", "N"), ("N", "E"), ("E", "S"), ("S", "E")]),
+    "D" : Tile("D", [("N", "S"), ("S", "N"), ("N", "E"), ("E", "N"), ("S", "E"), ("E", "S")]),
+    "E" : Tile("E", [("N", "S"), ("S", "N"),("O", "N"), ("N", "O"), ("O", "S"), ("S", "O")]),
     "F" : Tile("F", [("N", "S"), ("S", "N"),("E", "N"), ("N", "E"), ("E", "S"), ("S", "E"), ("E", "O"), ("O", "E"), ("N", "O"), ("O", "N"), ("S", "O"), ("O", "S")]),
 
 }
 
 print(diz_golden)
-print(manhattan_path(diz_golden["G1"], diz_golden["G2"]))
+
+lista_path, costo_path = manhattan_path(diz_golden["G1"], diz_golden["G2"])
+
+
+corrente = lista_path[0]
+for i in range(len(lista_path)):
+    if i == 0:
+        continue
+    else:
+        print(corrente, lista_path[i])
+        direzione = (corrente[0] - lista_path[i][0],  corrente[1] - lista_path[i][1])
+        print(get_direzione(direzione))
+        corrente = lista_path[i]
+
