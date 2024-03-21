@@ -44,7 +44,7 @@ def carica_dataset(nome_file):
         elif i <= num_golden + num_silver:
             diz_silver[f'G{i- num_golden}'] =  [int(z) for z in line]
         elif i <= num_golden + num_silver + num_tail:
-            diz_tail[line[0]] = [int(line[2]), int(line[1])]
+            diz_tail[line[0]] = [int(line[1]), int(line[2])]
         i = i+1
 
     return griglia, diz_golden, diz_silver, diz_tail
@@ -66,4 +66,20 @@ def get_direzione(tupla):
         return ("N", "O")
     elif tupla[0] == 1 and tupla[1] == -1:
         return ("S", "O")
+
+
+
+
+def get_tiles(direzione, lista_tiles):
+    tiles_ritorno = []
+    for i in lista_tiles:
+        if(direzione in lista_tiles[i].lista_arrivi):
+            tiles_ritorno.append(i)
+
+    return tiles_ritorno
+
+
+def scegli_tile(lista_tiles_scelti, diz_tiles):
+    print(lista_tiles_scelti, diz_tiles)
+
     

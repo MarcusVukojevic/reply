@@ -2,7 +2,7 @@ from utils import *
 from Tiles import Tile
 
 
-griglia, diz_golden, diz_silver, diz_tail = carica_dataset("00-trailer.txt")
+griglia, diz_golden, diz_silver, diz_tiles = carica_dataset("00-trailer.txt")
 
 '''
 lista_tiles = {
@@ -50,8 +50,11 @@ for i in range(len(lista_path)):
     if i == 0:
         continue
     else:
-        print(corrente, lista_path[i])
+        #print(corrente, lista_path[i])
         direzione = (corrente[0] - lista_path[i][0],  corrente[1] - lista_path[i][1])
-        print(get_direzione(direzione))
+        direzione_scelta = get_direzione(direzione)
+        lista_tiles_scelti = get_tiles(direzione_scelta, lista_tiles)
+        #print(lista_tiles_scelti)
         corrente = lista_path[i]
 
+scegli_tile(lista_tiles_scelti, diz_tiles)
